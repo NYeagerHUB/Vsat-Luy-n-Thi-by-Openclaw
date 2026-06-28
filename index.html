@@ -3,121 +3,364 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Luyện Thi V-SAT & THPT Online</title>
+  <title>V-SAT Online — Luyện Thi V-SAT & THPT Trên Máy Tính</title>
+  <meta name="description" content="Hệ thống luyện thi trực tuyến chuẩn định dạng V-SAT và THPT. 200+ đề thi, chấm điểm AI, báo cáo thông minh.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Header -->
-  <header class="header">
-    <div class="container header__inner">
-      <a href="/" class="logo">
-        <span class="logo__icon">📝</span>
-        <span class="logo__text">V-SAT Online</span>
-      </a>
-      <nav class="nav">
-        <a href="#features" class="nav__link">Tính năng</a>
-        <a href="#formats" class="nav__link">Đề thi</a>
-        <a href="#pricing" class="nav__link">Bảng giá</a>
-        <a href="#contact" class="nav__link">Liên hệ</a>
-        <a href="#" class="btn btn--primary btn--sm">Đăng ký</a>
-      </nav>
-    </div>
-  </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container hero__inner">
-      <div class="hero__content">
-        <h1 class="hero__title">Luyện Thi V-SAT & THPT<br>Trên Máy Tính</h1>
-        <p class="hero__desc">Hệ thống luyện thi trực tuyến chuẩn định dạng, bao gồm trắc nghiệm & tự luận, hỗ trợ kỳ thi V-SAT và THPT với công nghệ chấm điểm AI thông minh.</p>
-        <div class="hero__actions">
-          <a href="#" class="btn btn--primary btn--lg">Bắt đầu miễn phí</a>
-          <a href="#" class="btn btn--outline btn--lg">Xem demo</a>
+<!-- ==================== HEADER ==================== -->
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="/" class="logo">
+      <span class="logo__icon">📝</span>
+      <span class="logo__text">V-SAT Online</span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#features" class="nav__link">Tính năng</a>
+      <a href="#formats" class="nav__link">Đề thi</a>
+      <a href="#strategy" class="nav__link">Chiến lược</a>
+      <a href="#pricing" class="nav__link">Bảng giá</a>
+      <a href="#faq" class="nav__link">FAQ</a>
+      <a href="#" class="btn btn--primary btn--sm">Đăng ký miễn phí</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <div class="container hero__inner">
+    <div class="hero__content">
+      <span class="hero__badge">✨ Công nghệ AI chấm điểm</span>
+      <h1 class="hero__title">Luyện Thi V-SAT & THPT<br><span class="text-gradient">Trên Máy Tính</span></h1>
+      <p class="hero__desc">Hệ thống luyện thi trực tuyến chuẩn định dạng, bao gồm trắc nghiệm & tự luận, hỗ trợ kỳ thi V-SAT và THPT với công nghệ chấm điểm AI thông minh.</p>
+      <div class="hero__actions">
+        <a href="#" class="btn btn--primary btn--lg">Bắt đầu miễn phí →</a>
+        <a href="#formats" class="btn btn--ghost btn--lg">Xem đề thi ↓</a>
+      </div>
+      <div class="hero__stats">
+        <div class="hero__stat">
+          <span class="hero__stat-num">200+</span>
+          <span class="hero__stat-label">Đề thi</span>
+        </div>
+        <div class="hero__stat">
+          <span class="hero__stat-num">50K+</span>
+          <span class="hero__stat-label">Học sinh</span>
+        </div>
+        <div class="hero__stat">
+          <span class="hero__stat-num">98%</span>
+          <span class="hero__stat-label">Hài lòng</span>
         </div>
       </div>
-      <div class="hero__visual">
-        <div class="hero__card">
-          <div class="mock-exam">
-            <div class="mock-exam__timer">45:00</div>
-            <div class="mock-exam__progress">Câu 1/50</div>
-            <p class="mock-exam__question">Trong không gian Oxyz, cho mặt phẳng (P): 2x − y + 2z − 5 = 0. Vectơ pháp tuyến của (P) là:</p>
-            <div class="mock-exam__answers">
-              <label class="mock-exam__option"><input type="radio" name="demo"> a⃗ = (2; −1; 2)</label>
-              <label class="mock-exam__option"><input type="radio" name="demo"> a⃗ = (2; 1; 2)</label>
-              <label class="mock-exam__option"><input type="radio" name="demo"> a⃗ = (1; −2; 5)</label>
+    </div>
+    <div class="hero__visual">
+      <div class="hero__card">
+        <div class="mock-exam">
+          <div class="mock-exam__header">
+            <span class="mock-exam__timer">⏱ 45:00</span>
+            <span class="mock-exam__badge">Môn Toán</span>
+          </div>
+          <div class="mock-exam__progress">
+            <div class="progress-bar">
+              <div class="progress-bar__fill" style="width: 2%"></div>
             </div>
+            <span>Câu 1 / 50</span>
+          </div>
+          <p class="mock-exam__question">Trong không gian Oxyz, cho mặt phẳng (P): 2x − y + 2z − 5 = 0. Vectơ pháp tuyến của (P) là:</p>
+          <div class="mock-exam__answers">
+            <label class="mock-exam__option">
+              <span class="radio"></span>
+              A. a⃗ = (2; −1; 2)
+            </label>
+            <label class="mock-exam__option">
+              <span class="radio"></span>
+              B. a⃗ = (2; 1; 2)
+            </label>
+            <label class="mock-exam__option">
+              <span class="radio"></span>
+              C. a⃗ = (1; −2; 5)
+            </label>
+            <label class="mock-exam__option">
+              <span class="radio"></span>
+              D. a⃗ = (2; −1; −2)
+            </label>
+          </div>
+          <button class="mock-exam__btn">Câu tiếp theo →</button>
+        </div>
+      </div>
+      <div class="hero__floating-card hero__floating-card--1">
+        <span>🤖</span> AI đang chấm điểm...
+      </div>
+      <div class="hero__floating-card hero__floating-card--2">
+        <span>✅</span> Điểm: 8.5/10
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FEATURES ==================== -->
+<section id="features" class="section">
+  <div class="container">
+    <span class="section__badge">Tính năng</span>
+    <h2 class="section__title">Tại sao chọn V-SAT Online?</h2>
+    <p class="section__sub">Mọi thứ bạn cần để luyện thi hiệu quả, tất cả trong một nền tảng.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-card__icon">📚</div>
+        <h3 class="feature-card__title">Kho đề phong phú</h3>
+        <p class="feature-card__desc">200+ đề thi V-SAT và THPT được cập nhật liên tục, phân loại theo môn và mức độ khó.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon">🤖</div>
+        <h3 class="feature-card__title">Chấm điểm AI</h3>
+        <p class="feature-card__desc">Biết kết quả ngay sau khi nộp bài. AI chấm điểm chính xác và phân tích tức thì.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon">📊</div>
+        <h3 class="feature-card__title">Báo cáo thông minh</h3>
+        <p class="feature-card__desc">Biết chính xác phần nào cần ôn thêm. Phân tích điểm mạnh, yếu và gợi ý lộ trình cá nhân.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon">💰</div>
+        <h3 class="feature-card__title">Túi Lá</h3>
+        <p class="feature-card__desc">Mua đề thi trong 5 giây. Nạp tiền nhanh chóng, mua lẻ linh hoạt, không ràng buộc.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon">🌱</div>
+        <h3 class="feature-card__title">Trợ lý Mầm</h3>
+        <p class="feature-card__desc">AI tutor luôn bên cạnh, giải thích tận tình mỗi khi bạn cần. Hiểu tại sao, không chỉ biết đáp án.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon">📱</div>
+        <h3 class="feature-card__title">Thi mọi lúc mọi nơi</h3>
+        <p class="feature-card__desc">Tối ưu cho cả máy tính và điện thoại. Luyện thi bất cứ lúc nào, ở bất cứ đâu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== STRATEGY ==================== -->
+<section id="strategy" class="section section--alt">
+  <div class="container">
+    <span class="section__badge">Chiến lược</span>
+    <h2 class="section__title">Luyện thi có chiến lược</h2>
+    <p class="section__sub">Không chỉ làm đề. Biết mình đang ở đâu và cần làm gì tiếp.</p>
+    <div class="strategy-grid">
+      <div class="strategy-item">
+        <div class="strategy-item__num">01</div>
+        <h3 class="strategy-item__title">Điểm dự đoán</h3>
+        <p class="strategy-item__desc">Biết điểm dự đoán từng môn dựa trên kết quả luyện đề thực tế. Không guess, data-driven.</p>
+      </div>
+      <div class="strategy-item">
+        <div class="strategy-item__num">02</div>
+        <h3 class="strategy-item__title">Môn cần luyện</h3>
+        <p class="strategy-item__desc">Hệ thống gợi ý môn yếu nhất để bạn tập trung cải thiện, tiết kiệm thời gian ôn tập.</p>
+      </div>
+      <div class="strategy-item">
+        <div class="strategy-item__num">03</div>
+        <h3 class="strategy-item__title">Xu hướng điểm</h3>
+        <p class="strategy-item__desc">Biểu đồ điểm theo thời gian, theo dõi sự tiến bộ rõ ràng từng ngày.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FORMATS ==================== -->
+<section id="formats" class="section">
+  <div class="container">
+    <span class="section__badge">Đề thi</span>
+    <h2 class="section__title">Khám Phá Định Dạng Đề Thi</h2>
+    <p class="section__sub">Chọn định dạng phù hợp với mục tiêu của bạn.</p>
+    <div class="formats-grid">
+      <div class="format-card format-card--blue">
+        <span class="format-card__badge">Đề động</span>
+        <h3 class="format-card__title">Đề V-SAT</h3>
+        <p class="format-card__sub">Đánh giá Năng lực</p>
+        <p class="format-card__desc">Định dạng bài thi chuẩn kỳ thi đánh giá năng lực đặc thù. Làm quen với cấu trúc, áp lực thời gian và độ khó thực tế của kỳ thi V-SAT.</p>
+        <div class="format-card__tags">
+          <span class="tag">Toán</span>
+          <span class="tag">Lý</span>
+          <span class="tag">Hóa</span>
+          <span class="tag">Anh</span>
+          <span class="tag">Văn</span>
+        </div>
+        <a href="#" class="btn btn--primary">Xem đề V-SAT →</a>
+      </div>
+      <div class="format-card format-card--green">
+        <span class="format-card__badge">Đề chuẩn</span>
+        <h3 class="format-card__title">Đề THPT</h3>
+        <p class="format-card__sub">Tốt nghiệp</p>
+        <p class="format-card__desc">Cấu trúc bám sát đề thi tốt nghiệp THPT của Bộ GD&ĐT qua các năm. Ôn luyện toàn diện các môn với giải thích chi tiết từng câu.</p>
+        <div class="format-card__tags">
+          <span class="tag">Toán</span>
+          <span class="tag">Lý</span>
+          <span class="tag">Hóa</span>
+          <span class="tag">Sinh</span>
+          <span class="tag">Anh</span>
+          <span class="tag">Văn</span>
+        </div>
+        <a href="#" class="btn btn--primary">Xem đề THPT →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== MAM ==================== -->
+<section class="section section--alt">
+  <div class="container mam__inner">
+    <div class="mam__content">
+      <span class="section__badge">Tính năng mới</span>
+      <h2 class="mam__title">Mầm — AI Tutor của bạn</h2>
+      <p class="mam__desc">Mầm là bạn học AI luôn bên cạnh bạn. Giải thích tận tình mỗi khi bạn cần, không bao giờ chê trách.</p>
+      <ul class="mam__list">
+        <li>🔍 <strong>Phân tích lỗi sai</strong> — Chỉ ra chính xác bạn sai ở đâu, tại sao đáp án đó không đúng</li>
+        <li>📖 <strong>Giải thích từng bước</strong> — Lời giải dễ hiểu, phù hợp từng môn: Toán, Lý, Hóa, Anh...</li>
+        <li>⚡ <strong>Mẹo thi nhanh</strong> — Nhận dạng dạng bài + kỹ thuật giải nhanh cho trắc nghiệm</li>
+      </ul>
+      <a href="#" class="btn btn--primary btn--lg">Đăng ký nhận 5 câu giải thích free</a>
+    </div>
+    <div class="mam__visual">
+      <div class="chat-mock">
+        <div class="chat-mock__msg chat-mock__msg--user">
+          <span>Em không hiểu vì sao đáp án là A</span>
+        </div>
+        <div class="chat-mock__msg chat-mock__msg--bot">
+          <span class="chat-mock__avatar">🌱</span>
+          <div>
+            <strong>Mầm</strong>
+            <span>Vectơ pháp tuyến có dạng (A; B; C) từ phương trình Ax + By + Cz + D = 0. Ở đây A=2, B=−1, C=2 nên a⃗ = (2; −1; 2). Bạn hiểu chưa?</span>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Features -->
-  <section id="features" class="section">
-    <div class="container">
-      <h2 class="section__title">Tính năng nổi bật</h2>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-card__icon">📚</div>
-          <h3 class="feature-card__title">Kho đề phong phú</h3>
-          <p class="feature-card__desc">200+ đề thi V-SAT và THPT được cập nhật liên tục, phân loại theo môn và mức độ.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-card__icon">🤖</div>
-          <h3 class="feature-card__title">Chấm điểm AI</h3>
-          <p class="feature-card__desc">Biết kết quả ngay sau khi nộp bài, AI chấm điểm chính xác và phân tích tức thì.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-card__icon">📊</div>
-          <h3 class="feature-card__title">Báo cáo thông minh</h3>
-          <p class="feature-card__desc">Biết chính xác phần nào cần ôn thêm. Báo cáo điểm mạnh, điểm yếu và gợi ý lộ trình.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-card__icon">💰</div>
-          <h3 class="feature-card__title">Túi Lá</h3>
-          <p class="feature-card__desc">Mua đề thi trong 5 giây. Nạp tiền nhanh chóng, mua lẻ linh hoạt, không ràng buộc.</p>
+        <div class="chat-mock__input">
+          <span>Hỏi Mầm...</span>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Formats -->
-  <section id="formats" class="section section--alt">
-    <div class="container">
-      <h2 class="section__title">Khám Phá Định Dạng Đề Thi</h2>
-      <div class="formats-grid">
-        <div class="format-card format-card--blue">
-          <span class="format-card__badge">Đề động</span>
-          <h3 class="format-card__title">Đề V-SAT</h3>
-          <p class="format-card__sub">Đánh giá Năng lực</p>
-          <p class="format-card__desc">Định dạng bài thi chuẩn kỳ thi đánh giá năng lực đặc thù. Làm quen với cấu trúc, áp lực thời gian và độ khó thực tế.</p>
-          <a href="#" class="btn btn--primary">Xem đề V-SAT</a>
-        </div>
-        <div class="format-card format-card--green">
-          <span class="format-card__badge">Đề chuẩn</span>
-          <h3 class="format-card__title">Đề THPT</h3>
-          <p class="format-card__sub">Tốt nghiệp</p>
-          <p class="format-card__desc">Cấu trúc bám sát đề thi tốt nghiệp THPT của Bộ GD&ĐT qua các năm. Ôn luyện toàn diện các môn.</p>
-          <a href="#" class="btn btn--primary">Xem đề THPT</a>
-        </div>
+<!-- ==================== PRICING ==================== -->
+<section id="pricing" class="section">
+  <div class="container">
+    <span class="section__badge">Bảng giá</span>
+    <h2 class="section__title">Thanh toán đơn giản với Túi Lá</h2>
+    <p class="section__sub">Nạp tiền một lần, thanh toán mọi lúc. Không gói tháng, không ràng buộc.</p>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3 class="pricing-card__title">Miễn phí</h3>
+        <div class="pricing-card__price">0đ</div>
+        <p class="pricing-card__desc">Bắt đầu luyện thi không tốn phí</p>
+        <ul class="pricing-card__list">
+          <li>✅ Một số đề thi miễn phí</li>
+          <li>✅ Xem kết quả cơ bản</li>
+          <li>✅ 5 câu giải thích AI free</li>
+          <li>❌ Không có báo cáo chi tiết</li>
+        </ul>
+        <a href="#" class="btn btn--outline btn--md" style="width:100%">Bắt đầu</a>
+      </div>
+      <div class="pricing-card pricing-card--popular">
+        <span class="pricing-card__popular-badge">Phổ biến</span>
+        <h3 class="pricing-card__title">Túi Lá</h3>
+        <div class="pricing-card__price">Từ 10K</div>
+        <p class="pricing-card__desc">Mua lẻ theo nhu cầu, không ràng buộc</p>
+        <ul class="pricing-card__list">
+          <li>✅ Tất cả đề thi</li>
+          <li>✅ Chấm điểm AI đầy đủ</li>
+          <li>✅ Báo cáo chi tiết</li>
+          <li>✅ Giải thích không giới hạn</li>
+          <li>✅ Điểm dự đoán + xu hướng</li>
+        </ul>
+        <a href="#" class="btn btn--primary btn--md" style="width:100%">Nạp tiền ngay</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CTA -->
-  <section class="section cta">
-    <div class="container cta__inner">
-      <h2 class="cta__title">Bắt đầu luyện thi ngay hôm nay</h2>
-      <p class="cta__desc">Đăng ký miễn phí, trải nghiệm đề thi thực tế và cải thiện điểm số của bạn.</p>
-      <a href="#" class="btn btn--primary btn--lg">Đăng ký ngay</a>
+<!-- ==================== FAQ ==================== -->
+<section id="faq" class="section section--alt">
+  <div class="container">
+    <span class="section__badge">FAQ</span>
+    <h2 class="section__title">Câu hỏi thường gặp</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary class="faq-item__q">V-SAT Online có miễn phí không?</summary>
+        <p class="faq-item__a">Bạn có thể bắt đầu miễn phí với một số đề thi cơ bản. Để truy cập toàn bộ kho đề và tính năng AI, bạn nạp tiền vào Túi Lá và mua lẻ theo nhu cầu.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-item__q">AI chấm điểm có chính xác không?</summary>
+        <p class="faq-item__a">Hệ thống AI của chúng tôi được训练 trên hàng nghìn đề thi thực tế, độ chính xác trên 95% cho trắc nghiệm. Đối với tự luận, AI sẽ chấm theo rubric chi tiết.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-item__q">Đề thi có giống đề thi thật không?</summary>
+        <p class="faq-item__a">Có. Đề V-SAT được thiết kế chuẩn cấu trúc kỳ thi đánh giá năng lực. Đề THPT bám sát đề thi tốt nghiệp của Bộ GD&ĐT qua các năm.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-item__q">Thanh toán bằng cách nào?</summary>
+        <p class="faq-item__a">Bạn nạp tiền vào Túi Lá qua BIDV, sau đó dùng Lá để mua đề thi. Nhanh gọn, không cần thẻ tín dụng.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-item__q">Mầm AI tutor hoạt động thế nào?</summary>
+        <p class="faq-item__a">Sau khi làm bài, bạn có thể hỏi Mầm giải thích bất kỳ câu nào. Mầm sẽ phân tích lỗi sai, giải thích từng bước và đưa ra mẹo thi nhanh.</p>
+      </details>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer__inner">
-      <p class="footer__copy">&copy; 2026 V-SAT Online. All rights reserved.</p>
+<!-- ==================== CTA ==================== -->
+<section class="cta">
+  <div class="container cta__inner">
+    <h2 class="cta__title">Bắt đầu luyện thi ngay hôm nay</h2>
+    <p class="cta__desc">Đăng ký miễn phí, trải nghiệm đề thi thực tế và cải thiện điểm số của bạn.</p>
+    <div class="cta__actions">
+      <a href="#" class="btn btn--cta btn--lg">Đăng ký miễn phí →</a>
     </div>
-  </footer>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="/" class="logo">
+          <span class="logo__icon">📝</span>
+          <span class="logo__text">V-SAT Online</span>
+        </a>
+        <p class="footer__tagline">Hệ thống luyện thi V-SAT & THPT<br>trên máy tính hàng đầu Việt Nam.</p>
+      </div>
+      <div class="footer__links">
+        <h4>Sản phẩm</h4>
+        <a href="#">Kho đề thi</a>
+        <a href="#">Đề V-SAT</a>
+        <a href="#">Đề THPT</a>
+        <a href="#">Đề luyện thêm</a>
+      </div>
+      <div class="footer__links">
+        <h4>Hỗ trợ</h4>
+        <a href="#">Hướng dẫn sử dụng</a>
+        <a href="#">Liên hệ</a>
+        <a href="#">Chính sách bảo mật</a>
+        <a href="#">Điều khoản sử dụng</a>
+      </div>
+      <div class="footer__links">
+        <h4>Kết nối</h4>
+        <a href="#">Facebook</a>
+        <a href="#">Zalo</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 V-SAT Online. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
 </body>
 </html>
