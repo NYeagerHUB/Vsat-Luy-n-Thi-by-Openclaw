@@ -2,9 +2,9 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>V-SAT Online — Luyện Thi V-SAT & THPT Trên Máy Tính</title>
-  <meta name="description" content="Hệ thống luyện thi trực tuyến chuẩn định dạng V-SAT và THPT. 200+ đề thi, chấm điểm AI, báo cáo thông minh.">
+  <meta name="viewport" content="width=1280">
+  <title>V-SAT Online — Luyện Thi V-SAT Trên Máy Tính</title>
+  <meta name="description" content="Hệ thống luyện thi trực tuyến chuẩn định dạng V-SAT. 200+ đề thi, chấm điểm AI, báo cáo thông minh.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -19,17 +19,14 @@
       <span class="logo__icon">📝</span>
       <span class="logo__text">V-SAT Online</span>
     </a>
-    <nav class="nav" id="nav">
+    <nav class="nav">
       <a href="#features" class="nav__link">Tính năng</a>
-      <a href="#formats" class="nav__link">Đề thi</a>
+      <a href="#exam" class="nav__link">Đề thi</a>
       <a href="#strategy" class="nav__link">Chiến lược</a>
       <a href="#pricing" class="nav__link">Bảng giá</a>
       <a href="#faq" class="nav__link">FAQ</a>
-      <a href="#" class="btn btn--primary btn--sm">Đăng ký miễn phí</a>
+      <a href="#" class="btn btn--primary btn--sm" onclick="openAIChat()">🧠 Mầm AI</a>
     </nav>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
   </div>
 </header>
 
@@ -38,11 +35,11 @@
   <div class="container hero__inner">
     <div class="hero__content">
       <span class="hero__badge">✨ Công nghệ AI chấm điểm</span>
-      <h1 class="hero__title">Luyện Thi V-SAT & THPT<br><span class="text-gradient">Trên Máy Tính</span></h1>
-      <p class="hero__desc">Hệ thống luyện thi trực tuyến chuẩn định dạng, bao gồm trắc nghiệm & tự luận, hỗ trợ kỳ thi V-SAT và THPT với công nghệ chấm điểm AI thông minh.</p>
+      <h1 class="hero__title">Luyện Thi V-SAT<br><span class="text-gradient">Trên Máy Tính</span></h1>
+      <p class="hero__desc">Hệ thống luyện thi trực tuyến chuẩn định dạng V-SAT, trắc nghiệm & tự luận, chấm điểm AI thông minh, giải thích từng câu bởi <strong>Mầm — AI Tutor</strong>.</p>
       <div class="hero__actions">
         <a href="#" class="btn btn--primary btn--lg">Bắt đầu miễn phí →</a>
-        <a href="#formats" class="btn btn--ghost btn--lg">Xem đề thi ↓</a>
+        <a href="#exam" class="btn btn--ghost btn--lg">Làm thử đề ↓</a>
       </div>
       <div class="hero__stats">
         <div class="hero__stat">
@@ -64,34 +61,20 @@
         <div class="mock-exam">
           <div class="mock-exam__header">
             <span class="mock-exam__timer">⏱ 45:00</span>
-            <span class="mock-exam__badge">Môn Toán</span>
+            <span class="mock-exam__badge">Môn Hóa</span>
           </div>
           <div class="mock-exam__progress">
             <div class="progress-bar">
-              <div class="progress-bar__fill" style="width: 2%"></div>
+              <div class="progress-bar__fill" style="width: 4%"></div>
             </div>
-            <span>Câu 1 / 50</span>
+            <span>Câu 1 / 25</span>
           </div>
-          <p class="mock-exam__question">Trong không gian Oxyz, cho mặt phẳng (P): 2x − y + 2z − 5 = 0. Vectơ pháp tuyến của (P) là:</p>
+          <p class="mock-exam__question">Khi xà phòng, chất giặt rửa tan vào nước tạo thành dung dịch có sức căng bề mặt lớn làm cho vật cần giặt rửa dễ thấm ướt. Nhận định này đúng hay sai?</p>
           <div class="mock-exam__answers">
-            <label class="mock-exam__option">
-              <span class="radio"></span>
-              A. a⃗ = (2; −1; 2)
-            </label>
-            <label class="mock-exam__option">
-              <span class="radio"></span>
-              B. a⃗ = (2; 1; 2)
-            </label>
-            <label class="mock-exam__option">
-              <span class="radio"></span>
-              C. a⃗ = (1; −2; 5)
-            </label>
-            <label class="mock-exam__option">
-              <span class="radio"></span>
-              D. a⃗ = (2; −1; −2)
-            </label>
+            <label class="mock-exam__option"><span class="radio"></span> A. Đúng</label>
+            <label class="mock-exam__option"><span class="radio"></span> B. Sai</label>
           </div>
-          <button class="mock-exam__btn">Câu tiếp theo →</button>
+          <button class="mock-exam__btn" onclick="openAIChat()">Hỏi Mầm giải thích 🌱</button>
         </div>
       </div>
       <div class="hero__floating-card hero__floating-card--1">
@@ -109,12 +92,12 @@
   <div class="container">
     <span class="section__badge">Tính năng</span>
     <h2 class="section__title">Tại sao chọn V-SAT Online?</h2>
-    <p class="section__sub">Mọi thứ bạn cần để luyện thi hiệu quả, tất cả trong một nền tảng.</p>
+    <p class="section__sub">Mọi thứ bạn cần để luyện thi V-SAT hiệu quả.</p>
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-card__icon">📚</div>
         <h3 class="feature-card__title">Kho đề phong phú</h3>
-        <p class="feature-card__desc">200+ đề thi V-SAT và THPT được cập nhật liên tục, phân loại theo môn và mức độ khó.</p>
+        <p class="feature-card__desc">200+ đề thi V-SAT được cập nhật liên tục, phân loại theo môn và mức độ khó.</p>
       </div>
       <div class="feature-card">
         <div class="feature-card__icon">🤖</div>
@@ -124,7 +107,7 @@
       <div class="feature-card">
         <div class="feature-card__icon">📊</div>
         <h3 class="feature-card__title">Báo cáo thông minh</h3>
-        <p class="feature-card__desc">Biết chính xác phần nào cần ôn thêm. Phân tích điểm mạnh, yếu và gợi ý lộ trình cá nhân.</p>
+        <p class="feature-card__desc">Biết chính xác phần nào cần ôn thêm. Phân tích điểm mạnh, yếu và gợi ý lộ trình.</p>
       </div>
       <div class="feature-card">
         <div class="feature-card__icon">💰</div>
@@ -134,13 +117,66 @@
       <div class="feature-card">
         <div class="feature-card__icon">🌱</div>
         <h3 class="feature-card__title">Trợ lý Mầm</h3>
-        <p class="feature-card__desc">AI tutor luôn bên cạnh, giải thích tận tình mỗi khi bạn cần. Hiểu tại sao, không chỉ biết đáp án.</p>
+        <p class="feature-card__desc">AI tutor giải thích từng câu hỏi. Phân tích lỗi sai, hướng dẫn từng bước, không chỉ đưa đáp án.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-card__icon">📱</div>
-        <h3 class="feature-card__title">Thi mọi lúc mọi nơi</h3>
-        <p class="feature-card__desc">Tối ưu cho cả máy tính và điện thoại. Luyện thi bất cứ lúc nào, ở bất cứ đâu.</p>
+        <div class="feature-card__icon">📋</div>
+        <h3 class="feature-card__title">Bám sát đề thi thật</h3>
+        <p class="feature-card__desc">Cấu trúc chuẩn V-SAT, cập nhật đề mới nhất từ Bộ GD&ĐT, ngân hàng câu hỏi đa dạng.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== LIVE EXAM ==================== -->
+<section id="exam" class="section section--exam">
+  <div class="container">
+    <span class="section__badge">Làm thử</span>
+    <h2 class="section__title">Đề thi mẫu — Hóa Học V-SAT</h2>
+    <p class="section__sub">Trải nghiệm giao diện thi thật. Chọn đáp án, AI sẽ chấm và giải thích.</p>
+    <div class="exam-container" id="examContainer">
+      <div class="exam-sidebar">
+        <div class="exam-sidebar__header">
+          <h3>Đề số 1 — Hóa Học</h3>
+          <span class="exam-timer" id="examTimer">45:00</span>
+        </div>
+        <div class="exam-sidebar__info">
+          <div class="exam-progress-text">
+            <span id="currentQ">1</span>/<span id="totalQ">25</span>
+          </div>
+          <div class="exam-progress-bar">
+            <div class="exam-progress-bar__fill" id="progressFill" style="width: 4%"></div>
+          </div>
+        </div>
+        <div class="exam-sidebar__nav" id="questionNav">
+          <!-- JS generates 25 buttons -->
+        </div>
+        <div class="exam-sidebar__actions">
+          <button class="btn btn--primary btn--md" style="width:100%" onclick="submitExam()">Nộp bài</button>
+          <button class="btn btn--outline btn--md" style="width:100%;margin-top:8px" onclick="openAIChat()">Hỏi Mầm 🌱</button>
+        </div>
+      </div>
+      <div class="exam-main" id="examMain">
+        <!-- JS renders current question -->
+      </div>
+    </div>
+
+    <!-- Result panel (hidden) -->
+    <div class="exam-result" id="examResult" style="display:none">
+      <div class="exam-result__header">
+        <span class="exam-result__score" id="resultScore">0/25</span>
+        <span class="exam-result__label">Điểm của bạn</span>
+      </div>
+      <div class="exam-result__stats">
+        <div class="exam-result__stat correct" id="resultCorrect">Đúng: 0</div>
+        <div class="exam-result__stat wrong" id="resultWrong">Sai: 0</div>
+        <div class="exam-result__stat unanswered" id="resultUnanswered">Chưa làm: 25</div>
+      </div>
+      <div class="exam-result__actions">
+        <button class="btn btn--outline btn--md" onclick="resetExam()">Làm lại</button>
+        <button class="btn btn--primary btn--md" onclick="openAIChat()">Mầm phân tích 🌱</button>
+      </div>
+      <div class="exam-result__review" id="resultReview"></div>
     </div>
   </div>
 </section>
@@ -155,90 +191,58 @@
       <div class="strategy-item">
         <div class="strategy-item__num">01</div>
         <h3 class="strategy-item__title">Điểm dự đoán</h3>
-        <p class="strategy-item__desc">Biết điểm dự đoán từng môn dựa trên kết quả luyện đề thực tế. Không guess, data-driven.</p>
+        <p class="strategy-item__desc">Biết điểm dự đoán từng môn dựa trên kết quả luyện đề thực tế. Data-driven, không guess.</p>
       </div>
       <div class="strategy-item">
         <div class="strategy-item__num">02</div>
         <h3 class="strategy-item__title">Môn cần luyện</h3>
-        <p class="strategy-item__desc">Hệ thống gợi ý môn yếu nhất để bạn tập trung cải thiện, tiết kiệm thời gian ôn tập.</p>
+        <p class="strategy-item__desc">Hệ thống gợi ý môn yếu nhất để tập trung cải thiện, tối ưu thời gian ôn tập.</p>
       </div>
       <div class="strategy-item">
         <div class="strategy-item__num">03</div>
         <h3 class="strategy-item__title">Xu hướng điểm</h3>
-        <p class="strategy-item__desc">Biểu đồ điểm theo thời gian, theo dõi sự tiến bộ rõ ràng từng ngày.</p>
+        <p class="strategy-item__desc">Biểu đồ điểm theo thời gian, theo dõi sự tiến bộ rõ ràng qua từng bài thi.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==================== FORMATS ==================== -->
-<section id="formats" class="section">
-  <div class="container">
-    <span class="section__badge">Đề thi</span>
-    <h2 class="section__title">Khám Phá Định Dạng Đề Thi</h2>
-    <p class="section__sub">Chọn định dạng phù hợp với mục tiêu của bạn.</p>
-    <div class="formats-grid">
-      <div class="format-card format-card--blue">
-        <span class="format-card__badge">Đề động</span>
-        <h3 class="format-card__title">Đề V-SAT</h3>
-        <p class="format-card__sub">Đánh giá Năng lực</p>
-        <p class="format-card__desc">Định dạng bài thi chuẩn kỳ thi đánh giá năng lực đặc thù. Làm quen với cấu trúc, áp lực thời gian và độ khó thực tế của kỳ thi V-SAT.</p>
-        <div class="format-card__tags">
-          <span class="tag">Toán</span>
-          <span class="tag">Lý</span>
-          <span class="tag">Hóa</span>
-          <span class="tag">Anh</span>
-          <span class="tag">Văn</span>
-        </div>
-        <a href="#" class="btn btn--primary">Xem đề V-SAT →</a>
-      </div>
-      <div class="format-card format-card--green">
-        <span class="format-card__badge">Đề chuẩn</span>
-        <h3 class="format-card__title">Đề THPT</h3>
-        <p class="format-card__sub">Tốt nghiệp</p>
-        <p class="format-card__desc">Cấu trúc bám sát đề thi tốt nghiệp THPT của Bộ GD&ĐT qua các năm. Ôn luyện toàn diện các môn với giải thích chi tiết từng câu.</p>
-        <div class="format-card__tags">
-          <span class="tag">Toán</span>
-          <span class="tag">Lý</span>
-          <span class="tag">Hóa</span>
-          <span class="tag">Sinh</span>
-          <span class="tag">Anh</span>
-          <span class="tag">Văn</span>
-        </div>
-        <a href="#" class="btn btn--primary">Xem đề THPT →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== MAM ==================== -->
-<section class="section section--alt">
+<!-- ==================== MAM AI ==================== -->
+<section class="section">
   <div class="container mam__inner">
     <div class="mam__content">
-      <span class="section__badge">Tính năng mới</span>
-      <h2 class="mam__title">Mầm — AI Tutor của bạn</h2>
-      <p class="mam__desc">Mầm là bạn học AI luôn bên cạnh bạn. Giải thích tận tình mỗi khi bạn cần, không bao giờ chê trách.</p>
+      <span class="section__badge">AI Tutor</span>
+      <h2 class="mam__title">Mầm — Trợ lý AI của bạn</h2>
+      <p class="mam__desc">Mầm là AI Tutor luôn bên cạnh bạn. Giải thích tận tình mỗi khi bạn cần, dựa trên đáp án chuẩn từ giáo viên.</p>
       <ul class="mam__list">
         <li>🔍 <strong>Phân tích lỗi sai</strong> — Chỉ ra chính xác bạn sai ở đâu, tại sao đáp án đó không đúng</li>
-        <li>📖 <strong>Giải thích từng bước</strong> — Lời giải dễ hiểu, phù hợp từng môn: Toán, Lý, Hóa, Anh...</li>
-        <li>⚡ <strong>Mẹo thi nhanh</strong> — Nhận dạng dạng bài + kỹ thuật giải nhanh cho trắc nghiệm</li>
+        <li>📖 <strong>Giải thích từng bước</strong> — Lời giải dễ hiểu, bám sát đề thi thật có đáp án giáo viên</li>
+        <li>⚡ <strong>Mẹo thi nhanh</strong> — Nhận dạng dạng bài + kỹ thuật giải nhanh trắc nghiệm</li>
+        <li>📄 <strong>Chấm chéo</strong> — So sánh đáp án của bạn với đáp án giáo viên, phân tích độ chính xác</li>
       </ul>
-      <a href="#" class="btn btn--primary btn--lg">Đăng ký nhận 5 câu giải thích free</a>
+      <button class="btn btn--primary btn--lg" onclick="openAIChat()">Hỏi Mầm miễn phí 🌱</button>
     </div>
     <div class="mam__visual">
-      <div class="chat-mock">
+      <div class="chat-mock" id="chatMock">
         <div class="chat-mock__msg chat-mock__msg--user">
-          <span>Em không hiểu vì sao đáp án là A</span>
+          <span>Câu 1 mình sai chỗ nào vậy Mầm?</span>
         </div>
         <div class="chat-mock__msg chat-mock__msg--bot">
           <span class="chat-mock__avatar">🌱</span>
           <div>
             <strong>Mầm</strong>
-            <span>Vectơ pháp tuyến có dạng (A; B; C) từ phương trình Ax + By + Cz + D = 0. Ở đây A=2, B=−1, C=2 nên a⃗ = (2; −1; 2). Bạn hiểu chưa?</span>
+            <span>Câu 1 nói "sức căng bề mặt lớn" — sai nhé. Thực tế xà phòng <em>làm giảm</em> sức căng bề mặt, giúp nước thấm vào vải. Đáp án đúng là <strong>Sai</strong>. Bạn xem lại phần cơ chế giặt rửa trong sách nhé!</span>
           </div>
         </div>
-        <div class="chat-mock__input">
-          <span>Hỏi Mầm...</span>
+        <div class="chat-mock__msg chat-mock__msg--user">
+          <span>Còn câu 14?</span>
+        </div>
+        <div class="chat-mock__msg chat-mock__msg--bot">
+          <span class="chat-mock__avatar">🌱</span>
+          <div>
+            <strong>Mầm</strong>
+            <span>Tỉ lệ xăng:không khí = 1:66,75. Giải: tính O₂ cho 1 mol hỗn hợp = 13,35 → nhân với 5 (vì O₂ chiếm 20%) → 66,75. Đáp án D đúng.</span>
+          </div>
         </div>
       </div>
     </div>
@@ -246,7 +250,7 @@
 </section>
 
 <!-- ==================== PRICING ==================== -->
-<section id="pricing" class="section">
+<section id="pricing" class="section section--alt">
   <div class="container">
     <span class="section__badge">Bảng giá</span>
     <h2 class="section__title">Thanh toán đơn giản với Túi Lá</h2>
@@ -257,10 +261,10 @@
         <div class="pricing-card__price">0đ</div>
         <p class="pricing-card__desc">Bắt đầu luyện thi không tốn phí</p>
         <ul class="pricing-card__list">
-          <li>✅ Một số đề thi miễn phí</li>
+          <li>✅ Đề thi miễn phí hàng tuần</li>
           <li>✅ Xem kết quả cơ bản</li>
-          <li>✅ 5 câu giải thích AI free</li>
-          <li>❌ Không có báo cáo chi tiết</li>
+          <li>✅ 5 câu hỏi Mầm AI miễn phí</li>
+          <li>❌ Không báo cáo chi tiết</li>
         </ul>
         <a href="#" class="btn btn--outline btn--md" style="width:100%">Bắt đầu</a>
       </div>
@@ -270,11 +274,11 @@
         <div class="pricing-card__price">Từ 10K</div>
         <p class="pricing-card__desc">Mua lẻ theo nhu cầu, không ràng buộc</p>
         <ul class="pricing-card__list">
-          <li>✅ Tất cả đề thi</li>
+          <li>✅ Tất cả đề thi V-SAT</li>
           <li>✅ Chấm điểm AI đầy đủ</li>
-          <li>✅ Báo cáo chi tiết</li>
-          <li>✅ Giải thích không giới hạn</li>
-          <li>✅ Điểm dự đoán + xu hướng</li>
+          <li>✅ Mầm AI không giới hạn</li>
+          <li>✅ Báo cáo chi tiết + xu hướng</li>
+          <li>✅ Điểm dự đoán từng môn</li>
         </ul>
         <a href="#" class="btn btn--primary btn--md" style="width:100%">Nạp tiền ngay</a>
       </div>
@@ -283,30 +287,30 @@
 </section>
 
 <!-- ==================== FAQ ==================== -->
-<section id="faq" class="section section--alt">
+<section id="faq" class="section">
   <div class="container">
     <span class="section__badge">FAQ</span>
     <h2 class="section__title">Câu hỏi thường gặp</h2>
     <div class="faq-list">
       <details class="faq-item">
         <summary class="faq-item__q">V-SAT Online có miễn phí không?</summary>
-        <p class="faq-item__a">Bạn có thể bắt đầu miễn phí với một số đề thi cơ bản. Để truy cập toàn bộ kho đề và tính năng AI, bạn nạp tiền vào Túi Lá và mua lẻ theo nhu cầu.</p>
+        <p class="faq-item__a">Bạn có thể bắt đầu miễn phí với đề thi hàng tuần và 5 câu hỏi Mầm AI. Để truy cập toàn bộ tính năng, nạp tiền vào Túi Lá và mua lẻ theo nhu cầu.</p>
       </details>
       <details class="faq-item">
         <summary class="faq-item__q">AI chấm điểm có chính xác không?</summary>
-        <p class="faq-item__a">Hệ thống AI của chúng tôi được训练 trên hàng nghìn đề thi thực tế, độ chính xác trên 95% cho trắc nghiệm. Đối với tự luận, AI sẽ chấm theo rubric chi tiết.</p>
+        <p class="faq-item__a">AI chấm dựa trên đáp án chuẩn của giáo viên, độ chính xác >99% cho trắc nghiệm. Đối với tự luận, AI chấm theo rubric chi tiết.</p>
       </details>
       <details class="faq-item">
-        <summary class="faq-item__q">Đề thi có giống đề thi thật không?</summary>
-        <p class="faq-item__a">Có. Đề V-SAT được thiết kế chuẩn cấu trúc kỳ thi đánh giá năng lực. Đề THPT bám sát đề thi tốt nghiệp của Bộ GD&ĐT qua các năm.</p>
+        <summary class="faq-item__q">Mầm AI khác gì chatbot thông thường?</summary>
+        <p class="faq-item__a">Mầm được train trên kho đề thi V-SAT thực tế và đáp án giáo viên. Không chỉ trả lời, Mầm còn phân tích lỗi sai, chỉ rõ kiến thức cần ôn.</p>
       </details>
       <details class="faq-item">
         <summary class="faq-item__q">Thanh toán bằng cách nào?</summary>
-        <p class="faq-item__a">Bạn nạp tiền vào Túi Lá qua BIDV, sau đó dùng Lá để mua đề thi. Nhanh gọn, không cần thẻ tín dụng.</p>
+        <p class="faq-item__a">Nạp tiền vào Túi Lá qua BIDV, sau đó dùng Lá để mua đề thi. Nhanh gọn, không cần thẻ tín dụng, không ràng buộc.</p>
       </details>
       <details class="faq-item">
-        <summary class="faq-item__q">Mầm AI tutor hoạt động thế nào?</summary>
-        <p class="faq-item__a">Sau khi làm bài, bạn có thể hỏi Mầm giải thích bất kỳ câu nào. Mầm sẽ phân tích lỗi sai, giải thích từng bước và đưa ra mẹo thi nhanh.</p>
+        <summary class="faq-item__q">Đề thi có cập nhật theo cấu trúc mới không?</summary>
+        <p class="faq-item__a">Có. Đề thi được cập nhật liên tục theo cấu trúc V-SAT mới nhất của Bộ GD&ĐT, bao gồm cả đề động sinh ngẫu nhiên.</p>
       </details>
     </div>
   </div>
@@ -316,7 +320,7 @@
 <section class="cta">
   <div class="container cta__inner">
     <h2 class="cta__title">Bắt đầu luyện thi ngay hôm nay</h2>
-    <p class="cta__desc">Đăng ký miễn phí, trải nghiệm đề thi thực tế và cải thiện điểm số của bạn.</p>
+    <p class="cta__desc">Đăng ký miễn phí, làm đề thi thật, chấm bởi AI và nhận giải thích từ Mầm.</p>
     <div class="cta__actions">
       <a href="#" class="btn btn--cta btn--lg">Đăng ký miễn phí →</a>
     </div>
@@ -332,14 +336,14 @@
           <span class="logo__icon">📝</span>
           <span class="logo__text">V-SAT Online</span>
         </a>
-        <p class="footer__tagline">Hệ thống luyện thi V-SAT & THPT<br>trên máy tính hàng đầu Việt Nam.</p>
+        <p class="footer__tagline">Hệ thống luyện thi V-SAT trên máy tính<br>với công nghệ AI và đáp án giáo viên.</p>
       </div>
       <div class="footer__links">
         <h4>Sản phẩm</h4>
         <a href="#">Kho đề thi</a>
         <a href="#">Đề V-SAT</a>
-        <a href="#">Đề THPT</a>
         <a href="#">Đề luyện thêm</a>
+        <a href="#">Mầm AI Tutor</a>
       </div>
       <div class="footer__links">
         <h4>Hỗ trợ</h4>
@@ -361,6 +365,30 @@
   </div>
 </footer>
 
+<!-- ==================== AI CHAT MODAL ==================== -->
+<div class="modal-overlay" id="aiModal">
+  <div class="modal">
+    <div class="modal__header">
+      <span>🌱 Mầm AI Tutor</span>
+      <button class="modal__close" onclick="closeAIChat()">✕</button>
+    </div>
+    <div class="modal__body" id="chatBody">
+      <div class="chat-msg chat-msg--bot">
+        <span class="chat-msg__avatar">🌱</span>
+        <div>
+          <strong>Mầm</strong>
+          <span>Chào bạn! Mình là Mầm, trợ lý AI luyện thi V-SAT. Có câu nào bạn cần giải thích không?</span>
+        </div>
+      </div>
+    </div>
+    <div class="modal__footer">
+      <input type="text" class="chat-input" id="chatInput" placeholder="Nhập câu hỏi của bạn..." onkeydown="if(event.key==='Enter') sendChat()">
+      <button class="btn btn--primary btn--sm" onclick="sendChat()">Gửi</button>
+    </div>
+  </div>
+</div>
+
+<script src="exam-data.js"></script>
 <script src="main.js"></script>
 </body>
 </html>
