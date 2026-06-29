@@ -102,64 +102,24 @@
 <script>
 const EXAMS = [
   {
-    id: 'hoa-1',
+    id: 'hoa-de-1',
     subject: 'hoa',
     title: 'Đề số 1 — Hóa Học',
     questions: 25,
     time: 45,
     difficulty: 'Trung bình',
     free: true,
-    thumbnail: null
+    file: null
   },
   {
-    id: 'toan-1',
+    id: 'toan-de-1',
     subject: 'toan',
-    title: 'Đề số 1 — Toán',
-    questions: 30,
-    time: 60,
-    difficulty: 'Trung bình',
-    free: true,
-    thumbnail: null
-  },
-  {
-    id: 'ly-1',
-    subject: 'ly',
-    title: 'Đề số 1 — Vật Lý',
+    title: 'Đề thi Minh họa Toán 2025 – Trường ĐH Cần Thơ',
     questions: 25,
-    time: 45,
-    difficulty: 'Khó',
-    free: false,
-    thumbnail: null
-  },
-  {
-    id: 'anh-1',
-    subject: 'anh',
-    title: 'Đề số 1 — Tiếng Anh',
-    questions: 40,
-    time: 50,
-    difficulty: 'Dễ',
-    free: true,
-    thumbnail: null
-  },
-  {
-    id: 'van-1',
-    subject: 'van',
-    title: 'Đề số 1 — Ngữ Văn',
-    questions: 20,
-    time: 60,
-    difficulty: 'Trung bình',
-    free: false,
-    thumbnail: null
-  },
-  {
-    id: 'sinh-1',
-    subject: 'sinh',
-    title: 'Đề số 1 — Sinh Học',
-    questions: 25,
-    time: 40,
+    time: 90,
     difficulty: 'Trung bình',
     free: true,
-    thumbnail: null
+    file: 'toan-de-1.json'
   }
 ];
 
@@ -198,10 +158,10 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 });
 
 function startExam(examId) {
-  if (examId === 'hoa-1') {
+  if (examId === 'hoa-de-1') {
     window.location.href = 'index.html#exam';
   } else {
-    alert('Đề thi này sẽ được cập nhật sớm!');
+    window.location.href = `exam.html?exam=${examId}`;
   }
 }
 

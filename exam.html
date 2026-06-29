@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1280">
+  <title>V-SAT Online — Luyện Thi</title>
+  <meta name="description" content="Hệ thống luyện thi trực tuyến chuẩn định dạng V-SAT.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="index.html" class="logo">
+      <span class="logo__icon">📝</span>
+      <span class="logo__text">V-SAT Online</span>
+    </a>
+    <nav class="nav">
+      <a href="index.html#features" class="nav__link">Tính năng</a>
+      <a href="kho-de.html" class="nav__link">Kho đề</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ==================== LIVE EXAM ==================== -->
+<section id="exam" class="section section--exam" style="padding-top: 120px;">
+  <div class="container">
+    <span class="section__badge" id="examSubjectBadge">Đang load...</span>
+    <h2 class="section__title" id="examTitle">Đang tải đề thi...</h2>
+    <p class="section__sub" id="examSub">Vui lòng chờ trong giây lát.</p>
+    <div class="exam-container" id="examContainer">
+      <div class="exam-sidebar">
+        <div class="exam-sidebar__header">
+          <h3 id="examSidebarTitle">Đang load...</h3>
+          <span class="exam-timer" id="examTimer">00:00</span>
+        </div>
+        <div class="exam-sidebar__info">
+          <div class="exam-progress-text">
+            <span id="currentQ">1</span>/<span id="totalQ">0</span>
+          </div>
+          <div class="exam-progress-bar">
+            <div class="exam-progress-bar__fill" id="progressFill" style="width: 0%"></div>
+          </div>
+        </div>
+        <div class="exam-sidebar__nav" id="questionNav">
+          <!-- JS generates buttons -->
+        </div>
+        <div class="exam-sidebar__actions">
+          <button class="btn btn--primary btn--md" style="width:100%" onclick="submitExam()">Nộp bài</button>
+        </div>
+      </div>
+      <div class="exam-main" id="examMain">
+        <p>Đang tải đề thi...</p>
+      </div>
+    </div>
+
+    <!-- Result panel (hidden) -->
+    <div class="exam-result" id="examResult" style="display:none">
+      <div class="exam-result__header">
+        <span class="exam-result__score" id="resultScore">0/0</span>
+        <span class="exam-result__label">Điểm của bạn</span>
+      </div>
+      <div class="exam-result__stats">
+        <div class="exam-result__stat correct" id="resultCorrect">Đúng: 0</div>
+        <div class="exam-result__stat wrong" id="resultWrong">Sai: 0</div>
+        <div class="exam-result__stat unanswered" id="resultUnanswered">Chưa làm: 0</div>
+      </div>
+      <div class="exam-result__actions">
+        <button class="btn btn--outline btn--md" onclick="resetExam()">Làm lại</button>
+        <button class="btn btn--primary btn--md" onclick="window.location.href='kho-de.html'">Về kho đề</button>
+      </div>
+      <div class="exam-result__review" id="resultReview"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__bottom">
+      <p>&copy; 2026 V-SAT Online. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="main-new.js"></script>
+</body>
+</html>
