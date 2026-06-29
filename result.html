@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kết quả thi — V-SAT Online</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo"><span class="logo__icon">📝</span><span class="logo__text">V-SAT Online</span></a>
+      <nav class="nav"><a href="kho-de.html" class="nav__link">Kho đề</a></nav>
+    </div>
+  </header>
+  <main class="section" style="padding-top:120px">
+    <div class="container">
+      <div class="exam-result" style="display:block">
+        <div class="exam-result__header">
+          <span class="exam-result__score" id="resultScore">0/0</span>
+          <span class="exam-result__label">Kết quả gần nhất</span>
+        </div>
+        <div class="exam-result__stats">
+          <div class="exam-result__stat unanswered" id="resultUnanswered">Chưa có dữ liệu</div>
+        </div>
+        <div class="exam-result__actions">
+          <a class="btn btn--outline btn--md" href="kho-de.html">Về kho đề</a>
+        </div>
+        <div class="exam-result__review" id="resultReview"></div>
+      </div>
+    </div>
+  </main>
+  <script src="js/result.js"></script>
+</body>
+</html>

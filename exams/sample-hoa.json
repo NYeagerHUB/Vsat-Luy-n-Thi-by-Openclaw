@@ -1,0 +1,26 @@
+{
+  "title": "Đề số 1 — Hóa Học",
+  "time": 45,
+  "metadata": { "subject": "Hóa Học" },
+  "questions": [
+    {
+      "type": "truefalse",
+      "question": "Khi xà phòng, chất giặt rửa tan vào nước tạo thành dung dịch có sức căng bề mặt lớn làm cho vật cần giặt rửa dễ thấm ướt. Nhận định này đúng hay sai?",
+      "statements": [
+        "Dung dịch xà phòng giúp vật cần giặt dễ thấm ướt.",
+        "Sức căng bề mặt của dung dịch xà phòng lớn hơn nước tinh khiết.",
+        "Chất giặt rửa có phần ưa nước và phần kị nước.",
+        "Xà phòng luôn hoạt động tốt trong nước cứng."
+      ]
+    },
+    {
+      "type": "mcq",
+      "question": "Chất nào sau đây là ester?",
+      "options": ["CH3COOCH3", "C2H5OH", "CH3COOH", "HCHO"]
+    },
+    {
+      "type": "short",
+      "question": "Nhập công thức phân tử của methane."
+    }
+  ]
+}
