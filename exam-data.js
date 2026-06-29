@@ -14,13 +14,14 @@ const EXAM_DATA = {
       id: 1,
       type: 'truefalse',
       stem: 'Hình ảnh mô tả cơ chế giặt rửa của xà phòng',
+      image: 'https://coresg-normal.trae.ai/api/v1/text_to_image?prompt=diagram%20of%20soap%20molecules%20cleaning%20dirt%20in%20water%2C%20hydrophobic%20and%20hydrophilic%20ends%2C%20educational%20chemistry%20illustration&image_size=square_hd',
       parts: [
         { id: '1a', text: 'Khi xà phòng tan vào nước tạo dung dịch có sức căng bề mặt lớn làm vật cần giặt rửa dễ thấm ướt.', correct: false,
           explain: 'Sai. Xà phòng làm giảm sức căng bề mặt, không phải tăng. Phần "kị nước" thâm nhập vết bẩn, phần "ưa nước" quay ra ngoài.' },
         { id: '1b', text: 'Phần ưa nước trong xà phòng thâm nhập vào vết bẩn, phần kị nước quay ra ngoài.', correct: false,
           explain: 'Sai. Ngược lại: phần kị nước (gốc hydrocarbon) thâm nhập vào vết bẩn dầu mỡ, phần ưa nước quay ra ngoài môi trường nước.' },
         { id: '1c', text: 'Dưới tác dụng của xà phòng, vết bẩn bị phân tán thành hạt nhỏ và phân tán vào nước.', correct: true,
-          explain: 'Đúng. Đó là cơ ché hoạt động bề mặt: vết bẩn bị chia nhỏ và phân tán vào nước nhờ tác dụng nhũ hóa.' },
+          explain: 'Đúng. Đó là cơ chế hoạt động bề mặt: vết bẩn bị chia nhỏ và phân tán vào nước nhờ tác dụng nhũ hóa.' },
         { id: '1d', text: 'Tác dụng của xà phòng sẽ giảm nếu sử dụng nước cứng.', correct: true,
           explain: 'Đúng. Nước cứng chứa Ca²⁺, Mg²⁺ tạo kết tủa với muối acid béo, làm giảm khả năng tạo bọt và giặt rửa.' }
       ]
@@ -134,21 +135,23 @@ const EXAM_DATA = {
       id: 9,
       type: 'truefalse',
       stem: 'Quặng sylvinite (NaCl.KCl) — độ tan theo nhiệt độ',
+      image: 'https://coresg-normal.trae.ai/api/v1/text_to_image?prompt=solubility%20curve%20graph%20of%20NaCl%20and%20KCl%20in%20water%20vs%20temperature%2C%20educational%20chemistry%20chart&image_size=landscape_4_3',
       parts: [
         { id: '9a', text: 'Độ tan của KCl giảm chậm khi giảm nhiệt độ từ 100°C về 0°C.', correct: false,
-          explain: 'Sai. Độ tan của KCl giảm khá nhanh (từ ~56g/100g ở 100°C xuống ~28g ở 0°C).' },
+          explain: 'Sai. Độ tan của KCl giảm khá nhanh (từ ~56 g/100g ở 100°C xuống ~28 g ở 0°C).' },
         { id: '9b', text: 'Tách được KCl khỏi NaCl bằng phương pháp kết tinh.', correct: true,
           explain: 'Đúng. Dựa vào độ tan khác nhau — KCl giảm mạnh khi hạ nhiệt, NaCl hầu như không đổi → kết tinh phân đoạn.' },
         { id: '9c', text: 'Độ tan của NaCl tăng nhanh khi tăng nhiệt độ.', correct: false,
-          explain: 'Sai. Độ tan của NaCl hầu như không đổi (~36g/100g) khi tăng từ 0°C lên 100°C.' },
+          explain: 'Sai. Độ tan của NaCl hầu như không đổi (~36 g/100g) khi tăng từ 0°C lên 100°C.' },
         { id: '9d', text: 'Độ tan của KCl giảm nhanh hơn NaCl khi giảm nhiệt độ.', correct: true,
-          explain: 'Đúng. KCl giảm ~28g, NaCl giảm ~3g khi hạ từ 100°C xuống 0°C.' }
+          explain: 'Đúng. KCl giảm ~28 g, NaCl giảm ~3 g khi hạ từ 100°C xuống 0°C.' }
       ]
     },
     // === PHẦN 2: Multiple choice (câu 10-15) ===
     {
       id: 10,
       type: 'mcq',
+      sharedContentId: 'solubility-shared',
       stem: 'Phát biểu nào sau đây không đúng?',
       options: [
         'A. Xà phòng là hỗn hợp muối natri (hoặc kali) của acid béo, có thêm chất phụ gia.',
@@ -163,6 +166,7 @@ const EXAM_DATA = {
     {
       id: 11,
       type: 'mcq',
+      sharedContentId: 'solubility-shared',
       stem: 'Cho các phát biểu sau: (a) chất giặt rửa không gây phản ứng hóa học, (b) chất ưa nước tan tốt trong nước, (c) chất kị nước không tan trong dầu mỡ, (d) xà phòng là muối Na/K của acid béo, (e) chất tẩy rửa tổng hợp là muối sodium của acid béo, (g) phân tử chất giặt rửa gồm đầu ưa dầu gắn đuôi ưa nước, (h) ưu điểm của xà phòng là dùng được với nước cứng. Số phát biểu không đúng là?',
       options: ['A. 3', 'B. 4', 'C. 5', 'D. 6'],
       correct: 1, // B. 4
@@ -214,8 +218,105 @@ const EXAM_DATA = {
       correct: 0, // A
       answer: 'A',
       explain: 'm(Pb(C₂H₅)₄) = 0,5 × 1,6 = 0,8 g. M = 323 g/mol → n = 0,8/323 = 0,00248 mol. n(Pb) = n(Pb(C₂H₅)₄) = 0,00248 mol. m(Pb) = 0,00248 × 207 = 0,513 g. Đáp án A.'
+    },
+    {
+      id: 16,
+      type: 'mcq',
+      stem: 'Chất nào sau đây là ester?',
+      options: ['A. CH₃COOH', 'B. CH₃COOC₂H₅', 'C. C₂H₅OH', 'D. CH₃CHO'],
+      correct: 1,
+      answer: 'B',
+      explain: 'Đáp án B. Ester có nhóm chức –COO–. CH₃COOC₂H₅ là ethyl acetate.'
+    },
+    {
+      id: 17,
+      type: 'mcq',
+      stem: 'Kim loại nào phản ứng mạnh với nước ở nhiệt độ thường tạo dung dịch kiềm?',
+      options: ['A. Fe', 'B. Cu', 'C. Na', 'D. Ag'],
+      correct: 2,
+      answer: 'C',
+      explain: 'Đáp án C. Na + H₂O → NaOH + H₂. Na là kim loại kiềm, phản ứng mạnh với nước ở điều kiện thường.'
+    },
+    {
+      id: 18,
+      type: 'mcq',
+      stem: 'Dung dịch nào làm quỳ tím chuyển sang màu đỏ?',
+      options: ['A. NaOH', 'B. HCl', 'C. NaCl', 'D. K₂SO₄'],
+      correct: 1,
+      answer: 'B',
+      explain: 'Đáp án B. HCl là acid mạnh, làm quỳ tím chuyển đỏ.'
+    },
+    {
+      id: 19,
+      type: 'mcq',
+      stem: 'Polime nào sau đây được dùng phổ biến để sản xuất túi nilon?',
+      options: ['A. Polyethylene (PE)', 'B. Polyvinyl chloride (PVC)', 'C. Tơ nylon-6,6', 'D. Cao su thiên nhiên'],
+      correct: 0,
+      answer: 'A',
+      explain: 'Đáp án A. PE nhẹ, bền, dễ gia công màng mỏng nên dùng nhiều làm túi nilon.'
+    },
+    {
+      id: 20,
+      type: 'mcq',
+      stem: 'Số oxi hóa của sulfur trong H₂SO₄ là?',
+      options: ['A. +4', 'B. +6', 'C. -2', 'D. 0'],
+      correct: 1,
+      answer: 'B',
+      explain: 'Đáp án B. Gọi số oxi hóa S là x: 2(+1) + x + 4(-2) = 0 → x = +6.'
+    },
+    {
+      id: 21,
+      type: 'mcq',
+      stem: 'Khí nào là nguyên nhân chính gây hiệu ứng nhà kính do hoạt động đốt nhiên liệu hóa thạch?',
+      options: ['A. O₂', 'B. N₂', 'C. CO₂', 'D. H₂'],
+      correct: 2,
+      answer: 'C',
+      explain: 'Đáp án C. Đốt nhiên liệu hóa thạch tạo nhiều CO₂, làm tăng hiệu ứng nhà kính.'
+    },
+    {
+      id: 22,
+      type: 'mcq',
+      stem: 'Dung dịch glucose có phản ứng tráng bạc vì trong phân tử có nhóm chức nào?',
+      options: ['A. Alcohol', 'B. Aldehyde dạng mạch hở', 'C. Ester', 'D. Carboxyl'],
+      correct: 1,
+      answer: 'B',
+      explain: 'Đáp án B. Glucose ở dạng mạch hở có nhóm –CHO nên khử Ag⁺ trong thuốc thử Tollens tạo Ag.'
+    },
+    {
+      id: 23,
+      type: 'mcq',
+      stem: 'Chất nào sau đây là amino acid?',
+      options: ['A. CH₃COOH', 'B. H₂NCH₂COOH', 'C. C₂H₅NH₂', 'D. CH₃COOCH₃'],
+      correct: 1,
+      answer: 'B',
+      explain: 'Đáp án B. H₂NCH₂COOH (glycine) chứa đồng thời nhóm amino –NH₂ và carboxyl –COOH.'
+    },
+    {
+      id: 24,
+      type: 'mcq',
+      stem: 'Cho 0,1 mol NaOH tác dụng vừa đủ với HCl. Khối lượng NaCl tạo thành là?',
+      options: ['A. 4,00 g', 'B. 5,85 g', 'C. 3,65 g', 'D. 2,925 g'],
+      correct: 1,
+      answer: 'B',
+      explain: 'Đáp án B. NaOH + HCl → NaCl + H₂O. n(NaCl)=0,1 mol → m=0,1×58,5=5,85 g.'
+    },
+    {
+      id: 25,
+      type: 'mcq',
+      stem: 'Dãy nào gồm toàn chất điện li mạnh?',
+      options: ['A. HCl, NaOH, NaCl', 'B. CH₃COOH, NaOH, H₂O', 'C. HF, NH₃, KCl', 'D. C₂H₅OH, HCl, NaCl'],
+      correct: 0,
+      answer: 'A',
+      explain: 'Đáp án A. HCl là acid mạnh, NaOH là base mạnh, NaCl là muối tan — đều phân li gần như hoàn toàn trong nước.'
     }
   ],
+  // Shared content (used by multiple questions)
+  sharedContent: {
+    'solubility-shared': {
+      type: 'text',
+      content: 'Độ tan của một số muối ở các nhiệt độ khác nhau được biểu diễn trong đồ thị bên dưới.'
+    }
+  },
   // Correct answers stored for verification
   answers: {
     '1a': false, '1b': false, '1c': true, '1d': true,
@@ -227,7 +328,9 @@ const EXAM_DATA = {
     '7a': false, '7b': false, '7c': true, '7d': true,
     '8a': false, '8b': true, '8c': true, '8d': false,
     '9a': false, '9b': true, '9c': false, '9d': true,
-    '10': 'A', '11': 'B', '12': 'A', '13': 'C', '14': 'A', '15': 'A' // corrected 14 answer
+    '10': 'A', '11': 'B', '12': 'A', '13': 'C', '14': 'A', '15': 'A',
+    '16': 'B', '17': 'C', '18': 'B', '19': 'A', '20': 'B',
+    '21': 'C', '22': 'B', '23': 'B', '24': 'B', '25': 'A'
   }
 };
 

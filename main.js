@@ -84,10 +84,33 @@ function showQuestion(idx) {
   const q = EXAM_DATA.questions[idx];
   const main = document.getElementById('examMain');
 
-  let html = `<div class="exam-q__header">
+  let html = '';
+
+  // Render shared content first if exists
+  if (q.sharedContentId && EXAM_DATA.sharedContent && EXAM_DATA.sharedContent[q.sharedContentId]) {
+    const shared = EXAM_DATA.sharedContent[q.sharedContentId];
+    html += `<div class="exam-q__shared-content">`;
+    if (shared.title) {
+      html += `<h4 class="exam-q__shared-title">${shared.title}</h4>`;
+    }
+    if (shared.text) {
+      html += `<p class="exam-q__shared-text">${shared.text}</p>`;
+    }
+    if (shared.image) {
+      html += `<img src="${shared.image}" alt="Đồ thị dùng chung" class="exam-q__image">`;
+    }
+    html += `</div>`;
+  }
+
+  html += `<div class="exam-q__header">
     <span class="exam-q__num">Câu ${q.id} ${q.stem ? '– ' + q.stem : ''}</span>
-    <span class="exam-q__type">${q.type === 'truefalse' ? 'Đúng / Sai' : 'Trắc nghiệm'}</span>
+    <span class="exam-q__type">${q.type === 'truefalse' ? 'Đúng / Sai' : q.type === 'mcq' ? 'Trắc nghiệm' : q.type === 'matching' ? 'Ghép cột' : 'Trả lời ngắn'}</span>
   </div>`;
+
+  // Render question image if exists
+  if (q.image) {
+    html += `<img src="${q.image}" alt="Hình ảnh câu ${q.id}" class="exam-q__image">`;
+  }
 
   if (q.type === 'truefalse') {
     html += `<div class="subq-list">`;
@@ -112,7 +135,7 @@ function showQuestion(idx) {
       </div>`;
     });
     html += `</div>`;
-  } else {
+  } else if (q.type === 'mcq') {
     // MCQ
     const selected = state.answers[q.id];
     html += `<p class="exam-q__stem">${q.stem}</p>
@@ -133,6 +156,12 @@ function showQuestion(idx) {
     } else {
       html += `<div class="exam-q__explain"></div>`;
     }
+  } else if (q.type === 'matching') {
+    // Matching type (placeholder for now)
+    html += `<p class="exam-q__stem">${q.stem}</p><p style="color:var(--muted)">Loại câu hỏi ghép cột sẽ được hỗ trợ sớm</p>`;
+  } else if (q.type === 'shortanswer') {
+    // Short answer type (placeholder for now)
+    html += `<p class="exam-q__stem">${q.stem}</p><p style="color:var(--muted)">Loại câu hỏi trả lời ngắn sẽ được hỗ trợ sớm</p>`;
   }
 
   // Navigation buttons
