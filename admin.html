@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý đề thi - V-SAT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            color: #1f2937;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+        .header {
+            background: white;
+            padding: 20px 24px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #111827;
+        }
+        .header .btn {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-primary {
+            background-color: #3b82f6;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #2563eb;
+        }
+        .btn-secondary {
+            background-color: #f3f4f6;
+            color: #4b5563;
+            border: 1px solid #d1d5db;
+        }
+        .btn-secondary:hover {
+            background-color: #e5e7eb;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 24px;
+            margin-top: 24px;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #111827;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #374151;
+            font-size: 0.95rem;
+        }
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+        }
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .question-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        .question-item {
+            padding: 12px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .question-item:hover {
+            border-color: #3b82f6;
+            background-color: #eff6ff;
+        }
+        .question-item.active {
+            border-color: #3b82f6;
+            background-color: #dbeafe;
+        }
+        .question-number {
+            font-weight: 600;
+            color: #374151;
+        }
+        .question-type {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .type-truefalse { background-color: #fef3c7; color: #92400e; }
+        .type-mcq { background-color: #d1fae5; color: #065f46; }
+        .type-short { background-color: #dbeafe; color: #1e40af; }
+        .preview-section {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9fafb;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+        .preview-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #374151;
+        }
+        .btn-group {
+            display: flex;
+            gap: 10px;
+        }
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .option-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .option-label {
+            min-width: 30px;
+            font-weight: 600;
+        }
+        .add-btn {
+            width: 100%;
+            padding: 10px;
+            border: 2px dashed #d1d5db;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            color: #6b7280;
+            font-weight: 500;
+        }
+        .add-btn:hover {
+            border-color: #3b82f6;
+            color: #3b82f6;
+        }
+        .toolbar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        .toolbar-btn {
+            padding: 8px 12px;
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .toolbar-btn:hover {
+            background: #e5e7eb;
+        }
+        @media (max-width: 1024px) {
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🧑‍💻 Trình soạn đề thi V-SAT</h1>
+        <button class="btn btn-secondary" onclick="window.location.href='kho-de.html'">← Về kho đề</button>
+    </div>
+    <div class="container">
+        <div class="grid">
+            <!-- Left: Questions List & Exam Info -->
+            <div class="column">
+                <div class="card">
+                    <h2 class="card-title">📋 Thông tin đề thi</h2>
+                    <div class="form-group">
+                        <label>Tên đề thi</label>
+                        <input type="text" id="examTitle" value="Đề thi minh họa Toán">
+                    </div>
+                    <div class="form-group">
+                        <label>Môn học</label>
+                        <select id="examSubject">
+                            <option value="Toán học">Toán học</option>
+                            <option value="Vật lý">Vật lý</option>
+                            <option value="Hóa học">Hóa học</option>
+                            <option value="Ngữ văn">Ngữ văn</option>
+                            <option value="Tiếng Anh">Tiếng Anh</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Thời gian (phút)</label>
+                        <input type="number" id="examTime" value="90">
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-primary" onclick="saveExam()">💾 Lưu đề</button>
+                        <button class="btn btn-secondary" onclick="downloadExam()">⬇️ Tải xuống JSON</button>
+                    </div>
+                </div>
+                <div class="card" style="margin-top: 24px;">
+                    <h2 class="card-title">❓ Danh sách câu hỏi</h2>
+                    <button class="add-btn" onclick="addQuestion()">+ Thêm câu hỏi</button>
+                    <div class="question-list" id="questionList"></div>
+                </div>
+            </div>
+            <!-- Right: Question Editor & Preview -->
+            <div class="column">
+                <div class="card">
+                    <h2 class="card-title">✏️ Chỉnh sửa câu hỏi</h2>
+                    <div id="editorContainer" style="display: none;">
+                        <div class="form-group">
+                            <label>Loại câu hỏi</label>
+                            <select id="questionType" onchange="changeQuestionType()">
+                                <option value="truefalse">Đúng/Sai</option>
+                                <option value="mcq">Trắc nghiệm 4 lựa chọn</option>
+                                <option value="short">Trả lời ngắn</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Nội dung câu hỏi</label>
+                            <div class="toolbar">
+                                <button class="toolbar-btn" onclick="insertText('$$','$$')">Công thức (block)</button>
+                                <button class="toolbar-btn" onclick="insertText('$','$')">Công thức (inline)</button>
+                                <button class="toolbar-btn" onclick="insertText('\\begin{array}{|c|c|}\n\\hline A & B \\\\\\hline\n\\end{array}','')">Bảng</button>
+                            </div>
+                            <textarea id="questionContent" placeholder="Nhập nội dung câu hỏi, dùng $...$ hoặc $$...$$ cho LaTeX"></textarea>
+                        </div>
+                        <div id="typeSpecificEditor"></div>
+                        <div class="preview-section">
+                            <h3 class="preview-title">👁️ Xem trước</h3>
+                            <div id="questionPreview"></div>
+                        </div>
+                    </div>
+                    <div id="noQuestionSelected" style="text-align: center; padding: 40px; color: #9ca3af;">
+                        Chọn hoặc thêm câu hỏi để bắt đầu
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+    <script>
+        let exam = {
+            title: "Đề thi minh họa Toán",
+            time: 90,
+            questions: [
+                {
+                    type: "mcq",
+                    id: 1,
+                    question: "Tính giá trị của $\\frac{1}{2} + \\frac{1}{3}$",
+                    options: [
+                        "A. $\\frac{5}{6}$",
+                        "B. $\\frac{1}{5}$",
+                        "C. $\\frac{2}{5}$",
+                        "D. 1"
+                    ]
+                }
+            ],
+            metadata: { subject: "Toán học" }
+        };
+        let currentQuestionIndex = 0;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadFromLocalStorage();
+            renderQuestionList();
+            selectQuestion(0);
+        });
+
+        function loadFromLocalStorage() {
+            const saved = localStorage.getItem('currentExam');
+            if (saved) {
+                try {
+                    exam = JSON.parse(saved);
+                } catch(e) {}
+            }
+            document.getElementById('examTitle').value = exam.title;
+            document.getElementById('examSubject').value = exam.metadata?.subject || "Toán học";
+            document.getElementById('examTime').value = exam.time;
+        }
+
+        function renderQuestionList() {
+            const list = document.getElementById('questionList');
+            list.innerHTML = exam.questions.map((q, i) => `
+                <div class="question-item ${i === currentQuestionIndex ? 'active' : ''}" onclick="selectQuestion(${i})">
+                    <span class="question-number">Câu ${i+1}</span>
+                    <span class="question-type type-${q.type}">${getTypeLabel(q.type)}</span>
+                </div>
+            `).join('');
+        }
+
+        function getTypeLabel(type) {
+            switch(type) {
+                case 'truefalse': return "Đúng/Sai";
+                case 'mcq': return "Trắc nghiệm";
+                case 'short': return "Trả lời ngắn";
+                default: return type;
+            }
+        }
+
+        function selectQuestion(index) {
+            if (index < 0 || index >= exam.questions.length) return;
+            currentQuestionIndex = index;
+            document.getElementById('editorContainer').style.display = 'block';
+            document.getElementById('noQuestionSelected').style.display = 'none';
+            document.getElementById('questionType').value = exam.questions[index].type;
+            document.getElementById('questionContent').value = exam.questions[index].question;
+            changeQuestionType();
+            renderQuestionList();
+            renderPreview();
+        }
+
+        function addQuestion() {
+            const newQ = { type: "mcq", id: exam.questions.length + 1, question: "", options: ["A. ", "B. ", "C. ", "D. "] };
+            exam.questions.push(newQ);
+            currentQuestionIndex = exam.questions.length - 1;
+            saveToLocalStorage();
+            selectQuestion(currentQuestionIndex);
+        }
+
+        function changeQuestionType() {
+            const type = document.getElementById('questionType').value;
+            exam.questions[currentQuestionIndex].type = type;
+            const editorDiv = document.getElementById('typeSpecificEditor');
+            let html = "";
+            if (type === "truefalse") {
+                if (!exam.questions[currentQuestionIndex].statements) exam.questions[currentQuestionIndex].statements = ["", "", "", ""];
+                html = `
+                    <div class="options-group">
+                        ${exam.questions[currentQuestionIndex].statements.map((stmt, i) => `
+                            <div class="form-group">
+                                <label>Phát biểu ${String.fromCharCode(65+i)}</label>
+                                <textarea id="stmt-${i}" onchange="updateStatement(${i})">${stmt}</textarea>
+                            </div>
+                        `).join('')}
+                        <button class="add-btn" onclick="addStatement()">+ Thêm phát biểu</button>
+                    </div>
+                `;
+            } else if (type === "mcq") {
+                if (!exam.questions[currentQuestionIndex].options) exam.questions[currentQuestionIndex].options = ["A. ", "B. ", "C. ", "D. "];
+                html = `
+                    <div class="options-group">
+                        ${exam.questions[currentQuestionIndex].options.map((opt, i) => `
+                            <div class="option-row">
+                                <span class="option-label">${String.fromCharCode(65+i)}.</span>
+                                <input type="text" id="opt-${i}" value="${opt}" onchange="updateOption(${i})">
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            }
+            editorDiv.innerHTML = html;
+            saveToLocalStorage();
+            renderPreview();
+        }
+
+        function insertText(before, after) {
+            const textarea = document.getElementById('questionContent');
+            const start = textarea.selectionStart;
+            const end = textarea.selectionEnd;
+            const text = textarea.value;
+            const selected = text.substring(start, end);
+            const newValue = text.substring(0, start) + before + selected + after + text.substring(end);
+            textarea.value = newValue;
+            textarea.focus();
+            textarea.setSelectionRange(start + before.length, start + before.length + selected.length);
+            exam.questions[currentQuestionIndex].question = textarea.value;
+            saveToLocalStorage();
+            renderPreview();
+        }
+
+        function updateStatement(i) {
+            exam.questions[currentQuestionIndex].statements[i] = document.getElementById(`stmt-${i}`).value;
+            saveToLocalStorage();
+            renderPreview();
+        }
+
+        function updateOption(i) {
+            exam.questions[currentQuestionIndex].options[i] = document.getElementById(`opt-${i}`).value;
+            saveToLocalStorage();
+            renderPreview();
+        }
+
+        function addStatement() {
+            exam.questions[currentQuestionIndex].statements.push("");
+            changeQuestionType();
+        }
+
+        function renderPreview() {
+            const q = exam.questions[currentQuestionIndex];
+            let html = `
+                <h3 style="margin-bottom:12px; font-size:1.1rem;">Câu ${currentQuestionIndex+1} - ${getTypeLabel(q.type)}</h3>
+                <div style="margin-bottom:16px; line-height:1.8;">${q.question}</div>
+            `;
+            if (q.type === "truefalse" && q.statements) {
+                html += `<div style="display:flex; flex-direction:column; gap:8px;">`;
+                q.statements.forEach((stmt, i) => {
+                    html += `
+                        <div style="padding:8px; background:white; border-radius:4px; border:1px solid #e5e7eb;">
+                            <strong style="margin-right:8px;">${String.fromCharCode(65+i)}.</strong> ${stmt || "(chưa nhập)"}
+                            <div style="margin-top:8px; display:flex; gap:12px;">
+                                <button style="padding:4px 12px;">Đúng</button>
+                                <button style="padding:4px 12px;">Sai</button>
+                            </div>
+                        </div>
+                    `;
+                });
+                html += `</div>`;
+            } else if (q.type === "mcq" && q.options) {
+                html += `<div style="display:flex; flex-direction:column; gap:8px;">`;
+                q.options.forEach((opt, i) => {
+                    html += `<div style="padding:8px 12px; background:white; border-radius:4px; border:1px solid #e5e7eb;">${opt || "(chưa nhập)"}</div>`;
+                });
+                html += `</div>`;
+            }
+            document.getElementById('questionPreview').innerHTML = html;
+            if (window.renderMathInElement) {
+                renderMathInElement(document.getElementById('questionPreview'), {
+                    delimiters: [
+                        {left: "$$", right: "$$", display: true},
+                        {left: "$", right: "$", display: false}
+                    ]
+                });
+            }
+        }
+
+        document.getElementById('questionContent').addEventListener('input', () => {
+            exam.questions[currentQuestionIndex].question = document.getElementById('questionContent').value;
+            saveToLocalStorage();
+            renderPreview();
+        });
+
+        document.getElementById('examTitle').addEventListener('input', () => { exam.title = document.getElementById('examTitle').value; saveToLocalStorage(); });
+        document.getElementById('examSubject').addEventListener('change', () => { exam.metadata = exam.metadata || {}; exam.metadata.subject = document.getElementById('examSubject').value; saveToLocalStorage(); });
+        document.getElementById('examTime').addEventListener('input', () => { exam.time = parseInt(document.getElementById('examTime').value); saveToLocalStorage(); });
+
+        function saveToLocalStorage() {
+            localStorage.setItem('currentExam', JSON.stringify(exam));
+        }
+
+        function saveExam() {
+            const fileName = prompt("Nhập tên file (vd: de-toan-1)", "exam");
+            if (fileName) {
+                const blob = new Blob([JSON.stringify(exam, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${fileName}.json`;
+                a.click();
+                URL.revokeObjectURL(url);
+                alert("Đã lưu file!");
+            }
+        }
+
+        function downloadExam() {
+            saveExam();
+        }
+    </script>
+</body>
+</html>

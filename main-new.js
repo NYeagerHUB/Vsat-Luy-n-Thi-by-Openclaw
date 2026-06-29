@@ -89,7 +89,7 @@ function showQuestion(idx) {
       <span class="exam-q__num">Câu ${q.id}</span>
       <span class="exam-q__type">${getQuestionTypeName(q.type)}</span>
     </div>
-    <p class="exam-q__stem">${q.question}</p>
+    <p class="exam-q__stem">${q.question.replace("[EMPIRE TEAM]", "")}</p>
   `;
   
   if (q.type === 'truefalse') {
@@ -144,6 +144,15 @@ function showQuestion(idx) {
   
   main.innerHTML = html;
   updateNav();
+  // Render LaTeX
+  if (window.renderMathInElement) {
+    renderMathInElement(main, {
+      delimiters: [
+        {left: "$$", right: "$$", display: true},
+        {left: "$", right: "$", display: false}
+      ]
+    });
+  }
 }
 
 function getQuestionTypeName(type) {
